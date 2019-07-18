@@ -16,19 +16,8 @@ set /a "m=(%m%-1)*3"
 set month=JANFEBMARAPRMAYJUNJULAUGSEPOCTNOVDEC
 set monthName=!month:~%m%,3!
 echo %monthName%
-set sourcefolder="C:\Users\ss185559\Downloads"
-echo %sourcefolder%
-cd %sourcefolder%
 
-set folder="C:\Data\Desktop\Zerodha\@oneminutedata-20180825T054231Z-001\oneminutedata"
-
-
-mv %day%%monthName%.zip %folder%\%monthName%_2019\.
-
-cd %folder%\%monthName%_2019
-
-unzip %folder%\%monthName%_2019\%day%%monthName%.zip
-
+set folder = "C:\Data\Desktop\Zerodha\@oneminutedata-20180825T054231Z-001\oneminutedata"
 cd %folder%
 mkdir %monthName%_2019\%day%%monthName%_temp
 ::set todayfolder = 
@@ -41,7 +30,6 @@ copy %monthName%_2019\%day%%monthName%\NIFTY_%monthName%%day%.txt %monthName%_20
 
 echo %folder%\%monthName%_%year%_temp
 for %%i in %FILE_LIST% do copy %monthName%_2019\%day%%monthName%\%%i.txt %monthName%_2019\%day%%monthName%_temp
-pause
+
 rm -rf %monthName%_2019\%day%%monthName%
 mv %monthName%_2019\%day%%monthName%_temp %monthName%_2019\%day%%monthName%
-rm -rf %folder%\%monthName%_2019\%day%%monthName%.zip
